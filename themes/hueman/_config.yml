@@ -1,0 +1,72 @@
+# Menus
+menu:
+    home: /
+    archive: /archives/index.html
+    #Categories: 
+    girl: /girl/index.html
+    about: /about/index.html
+    github: https://github.com/lanhouzi/    
+
+# Customize
+customize:
+    logo:
+        width: 120
+        height: 120
+        url: images/logo.png
+    theme_color: '#3b8dbd'
+    highlight: monokai-sublime
+    # sidebar position, options: left, right
+    sidebar: left
+    thumbnail: true
+    favicon: /favicon.ico
+    social_links: # for more icons, please see http://fontawesome.io/icons/#brand
+        github: https://github.com/lanhouzi
+        facebook: /
+        tencent-weibo: http://t.qq.com/czieboy
+        rss: /atom.xml
+
+# Widgets
+widgets:
+    - recent_posts
+    - category
+    - archive
+    - tag
+    - tagcloud
+    - weixin
+    - links
+
+# Search
+search:
+    swiftype: vtmYuDTkoM2QmWR-UbkQ
+
+# Comment
+comment:
+    duoshuo: lanhouzi
+
+# Share，options: jiathis, bdshare, addtoany, default
+share: default
+
+# Plugins
+plugins:
+    fancybox: true
+    scrollLoading: true
+    tencent_analytics: 9396934
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id:
+        google_plus:
+    links:
+        ASP.NET: http://www.asp.net/
+        HighCharts中文网: http://www.hcharts.cn/
+        Hackster.io: https://www.hackster.io/
+        Windows IoT: https://dev.windows.com/zh-cn/iot/
+        贤心: http://sentsin.com/
+        Peng8: http://www.peng8.net/
+        作业部落: https://www.zybuluo.com/
+        邻居的耳朵: http://ear.duomi.com/
+        花瓣: http://huaban.com/
+        WANIMAL: http://wanimal.lofter.com/
