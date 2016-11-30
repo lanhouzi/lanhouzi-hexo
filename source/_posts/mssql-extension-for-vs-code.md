@@ -12,7 +12,7 @@ date: 2016-11-29 23:35:37
 
 > 环境/工具：Windows 10，[Visual Studio Code][0]
 
-{% qnimg iisstart.png title:IIS alt:IIS normal:yes %}
+{% qnimg mssql-ext/1.gif title:mssql-extension alt:mssql-extension normal:yes %}
 
 ### 用于开发Microsoft SQL Server，Azure SQL数据库和SQL数据仓库的扩展，功能如下：
 
@@ -28,51 +28,81 @@ date: 2016-11-29 23:35:37
 
 ### 2. 安装 mssql 扩展，然后重启 VS Code
 
-{% qnimg mssql_ext/1.png title:mssql_extension alt:mssql_extension normal:yes %}
+{% qnimg mssql-ext/2.png title:mssql-extension alt:mssql-extension normal:yes %}
 
-### 3. 使用 `VS Code` 打开一个 扩展名为 `sql` 的文件，或者使用 `(ctrl+n)` 快捷键创建一个新的编辑器并且把语言模式切换为SQL，mssql命令和功能将在编辑器中以SQL语言模式启用。
+### 3. 使用 `VS Code` 打开一个扩展名为 `sql` 的文件，或者使用 `(ctrl+n)` 快捷键创建一个新的编辑器并且把语言模式切换为SQL，mssql命令和功能将在编辑器中以SQL语言模式启用。
 
-{% qnimg web_deploy/3_1.png title:WebDeploy alt:WebDeploy normal:yes %}
+### 4. 通过 `F1` 或 `CTRL+SHIFT+P` 快捷键打开命令选项板按，输入 `sql` 然后选择 `MS SQL: Connect` 选项。 
 
-### 4. 使用命令选项板按F1键创建新的连接配置文件，键入sqlman运行MS SQL：管理连接配置文件命令。 选择创建。 有关如何在用户设置（settings.json）文件中创建和编辑连接配置文件的详细信息，请参阅管理连接配置文件。
+{% qnimg mssql-ext/3.png title:mssql-extension alt:mssql-extension normal:yes %}
 
-{% qnimg web_deploy/4_1.png title:WebDeploy alt:WebDeploy normal:yes %}
+### 5. 然后使用一个已有的连接配置或者创建一个新的连接配置，这里选择 `Create Connection Profile`。
 
-{% qnimg web_deploy/4_2.png title:WebDeploy alt:WebDeploy normal:yes %}
+{% qnimg mssql-ext/4.png title:mssql-extension alt:mssql-extension normal:yes %}
 
-### 5. 启用站点的 Web Deploy 发布功能
+### 6. 然后输入一个数据库服务器地址或者机器名。
 
-{% qnimg web_deploy/5_1.png title:WebDeploy alt:WebDeploy normal:yes %}
+{% qnimg mssql-ext/5.png title:mssql-extension alt:mssql-extension normal:yes %}
 
-{% qnimg web_deploy/5_2.png title:WebDeploy alt:WebDeploy normal:yes %}
+### 7. 然后输入数据库名称（可选，如果跳过则连接默认数据库）。
+
+{% qnimg mssql-ext/6.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+### 8. 然后选择身份验证类型，`SQL Login` :使用数据库账号密码验证，`Integrated`：集成验证（Windows 身份验证），选择这种验证方式时将会跳过步骤9、10和11。
+
+{% qnimg mssql-ext/7.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+### 9. 然后输入SQL用户名。
+
+{% qnimg mssql-ext/8.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+### 10. 然后输入SQL密码。
+
+{% qnimg mssql-ext/9.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+### 11. 然后选择是否需要记住密码。
+
+{% qnimg mssql-ext/10.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+### 12. 然后输入该连接配置的名称（可选）。
+
+{% qnimg mssql-ext/11.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+### 13. 完成之后将会出现连接提示信息。
+
+{% qnimg mssql-ext/12.png title:mssql-extension alt:mssql-extension normal:yes %}
+
+{% qnimg mssql-ext/13.png title:mssql-extension alt:mssql-extension normal:yes %}
 
 ---
-#### 到这里为止服务端（IIS）需要配置的事项已完成，下面配置客户端（Visual Studio）的相关事项
 
----
+### 打开 `文件>首选项>用户设置` 可以看到已经创建完成的连接配置，当然也可以直接在这里新增/修改/删除连接配置，更多详细的配置说明请参考 [官方文档][1]。
 
-### 6. 打开 Visual Studio ，在需要部署的 Web 项目上单击右键选择 `发布`
+``` js
+"mssql.connections": [
+    {
+        "server": "localhost",
+        "database": "NopCommerce3.80",
+        "authenticationType": "SqlLogin",
+        "user": "sa",
+        "password": "",
+        "savePassword": true,
+        "profileName": "NopCommerce3.80"
+    },
+    {
+        "server": "localhost",
+        "database": "ReportServerTempDB",
+        "authenticationType": "Integrated",
+        "profileName": "ReportServerTempDB",
+        "password": ""
+    }
+]
+```
 
-{% qnimg web_deploy/6.png title:WebDeploy alt:WebDeploy normal:yes %}
+### 示例
 
-### 7. 新建一个部署配置文件
-
-{% qnimg web_deploy/7.png title:WebDeploy alt:WebDeploy normal:yes %}
-
-### 8. 配置部署连接参数
-
-{% qnimg web_deploy/8.png title:WebDeploy alt:WebDeploy normal:yes %}
-
-### 9. 设置编译及连接字符串等相关参数
-
-{% qnimg web_deploy/9.png title:WebDeploy alt:WebDeploy normal:yes %}
-
-### 10. 预览部署更新文件列表
-
-{% qnimg web_deploy/10.png title:WebDeploy alt:WebDeploy normal:yes %}
-
-### 11. 发布站点，VS会输出部署消息
-
-{% qnimg web_deploy/11.png title:WebDeploy alt:WebDeploy normal:yes %}
+{% qnimg mssql-ext/14.png title:mssql-extension alt:mssql-extension normal:yes %}
 
 [0]:https://code.visualstudio.com/Download
+[1]:https://github.com/Microsoft/vscode-mssql
+
